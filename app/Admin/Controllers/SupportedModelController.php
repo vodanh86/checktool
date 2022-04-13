@@ -26,12 +26,11 @@ class SupportedModelController extends AdminController
     {
         $grid = new Grid(new SupportedModel());
 
-        $grid->column('id', __('Id'));
         $grid->column('type', __('Type'));
         $grid->column('model', __('Model'));
         $grid->column('manufacturer', __('Manufacturer'));
         $grid->column('board', __('Board'));
-        $grid->column('status', __('Status'));
+        $grid->column('status', __('Status'))->using(Constant::STATUS);
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -69,11 +68,11 @@ class SupportedModelController extends AdminController
     {
         $form = new Form(new SupportedModel());
 
-        $form->text('type', __('Type'));
-        $form->text('model', __('Model'));
+        $form->select('type', __('Loại'))->options(Constant::DEVICE_TYPE)->setWidth(2, 2)->required();
+        $form->text('model', __('Model'))->required();
         $form->text('manufacturer', __('Manufacturer'));
         $form->text('board', __('Board'));
-        $form->number('status', __('Status'))->default(1);
+        $form->select('status', __('Status'))->options(Constant::STATUS)->setWidth(2, 2)->default(1);
 
         return $form;
     }
