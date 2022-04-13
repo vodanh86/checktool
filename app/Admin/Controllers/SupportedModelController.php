@@ -15,7 +15,7 @@ class SupportedModelController extends AdminController
      *
      * @var string
      */
-    protected $title = 'SupportedModel';
+    protected $title = 'Các dòng máy hỗ trợ';
 
     /**
      * Make a grid builder.
@@ -26,13 +26,11 @@ class SupportedModelController extends AdminController
     {
         $grid = new Grid(new SupportedModel());
 
-        $grid->column('type', __('Type'));
+        $grid->column('type', __('Loại máy'));
         $grid->column('model', __('Model'));
-        $grid->column('manufacturer', __('Manufacturer'));
-        $grid->column('board', __('Board'));
-        $grid->column('status', __('Status'))->using(Constant::STATUS);
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('manufacturer', __('Hãng sản xuất'));
+        $grid->column('board', __('Loại '));
+        $grid->column('status', __('Trạng thái'))->using(Constant::STATUS);
 
         return $grid;
     }
