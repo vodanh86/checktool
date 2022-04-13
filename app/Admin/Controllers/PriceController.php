@@ -26,7 +26,7 @@ class PriceController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Price());
-
+        $grid->column('type', __('Loại máy'));
         $grid->model_id('Dòng máy')->display(function ($model_id) {
             $model = SupportedModel::find($model_id);
             if ($model) {
@@ -74,7 +74,8 @@ class PriceController extends AdminController
     {
         $form = new Form(new Price());
 
-        $form->select('model_id', __('Loại máy'))->options(SupportedModel::all()->pluck('model', 'id'))->required();
+        $form->select('type', __('Loại'))->options(Constant::DEVICE_TYPE)->setWidth(2, 2)->required();
+        $form->select('model_id', __('Dòng máy'))->options(SupportedModel::all()->pluck('model', 'id'))->required();
         $form->number('storage', __('Dung lượng bộ nhớ (GB)'));
         $form->text('level1_price', __('Giá loại 1'));
         $form->text('level2_price', __('Giá loại 2'));
