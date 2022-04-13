@@ -13,4 +13,5 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('supported-models', SupportedModelController::class);
+    $router->resource('prices', PriceController::class);
 });
