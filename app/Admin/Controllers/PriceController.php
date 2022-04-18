@@ -16,7 +16,7 @@ class PriceController extends AdminController
      *
      * @var string
      */
-    protected $title = 'Price';
+    protected $title = 'Giá nhập';
 
     /**
      * Make a grid builder.
