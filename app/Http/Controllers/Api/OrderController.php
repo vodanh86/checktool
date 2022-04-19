@@ -69,6 +69,9 @@ class OrderController extends Controller
         $order->district = $request->input('district');
         $order->commune = $request->input('commune');
         $order->save();
+
+        $order->order_code = "TELINK" . $order->id;
+        $order->save();
         return (new OrderResource($order))->response()->setStatusCode(Response::HTTP_CREATED);
     }
 

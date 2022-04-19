@@ -29,6 +29,7 @@ class OrderController extends AdminController
         $grid = new Grid(new Order());
 
         $grid->column('id', __('Id'));
+        $grid->column('order_code', __('Mã giao dịch'));
         $grid->column('type', __('Loại máy'));
         $grid->model_id('Dòng máy')->display(function ($model_id) {
             $model = SupportedModel::find($model_id);
