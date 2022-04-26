@@ -8,6 +8,10 @@ class Price extends Model
 {
     protected $table = 'price';
 
+    protected $casts = [
+        'level1_price' =>'json',
+    ];
+
 	protected $hidden = [
     ];
 
