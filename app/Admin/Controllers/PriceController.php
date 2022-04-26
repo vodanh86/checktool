@@ -77,10 +77,22 @@ class PriceController extends AdminController
         $form->select('type', __('Loại'))->options(Constant::DEVICE_TYPE)->setWidth(2, 2)->required();
         $form->select('model_id', __('Dòng máy'))->options(SupportedModel::all()->pluck('model', 'id'))->required();
         $form->number('storage', __('Dung lượng bộ nhớ (GB)'));
-        $form->text('level1_price', __('Giá loại 1'));
-        $form->text('level2_price', __('Giá loại 2'));
-        $form->text('level3_price', __('Giá loại 3'));
-        $form->text('level4_price', __('Giá loại 4'));
+        $form->embeds('level1_price',  __('Giá hàng loại 1'), function ($form) {
+            $form->text('min')->rules('required');
+            $form->text('max')->rules('required');
+        });
+        $form->embeds('level2_price',  __('Giá hàng loại 2'), function ($form) {
+            $form->text('min')->rules('required');
+            $form->text('max')->rules('required');
+        });
+        $form->embeds('level3_price',  __('Giá hàng loại 3'), function ($form) {
+            $form->text('min')->rules('required');
+            $form->text('max')->rules('required');
+        });
+        $form->embeds('level4_price',  __('Giá hàng loại 4'), function ($form) {
+            $form->text('min')->rules('required');
+            $form->text('max')->rules('required');
+        });
 
         return $form;
     }
