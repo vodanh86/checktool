@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\SupportedModel;
 use App\Http\Resources\OrderResourceCollection;
 use App\Http\Resources\OrderResource;
 use Illuminate\Http\Request;
@@ -35,7 +36,10 @@ class OrderController extends Controller
             'password' => 'bail|required|string|min:8'
         ]);*/
         $order = new Order();
-        $order->model_id = $request->input('model_id');
+        $supportedModel = SupportedModel::where('model', 'like', '%' . $request->get('model') . '%')->first();
+        if ($supportedModel){
+            $order->model_id = $supportedModel->id;
+        }
         $order->storage = $request->input('storage');
         $order->battery = $request->input('battery');
         $order->screen = $request->input('screen');
