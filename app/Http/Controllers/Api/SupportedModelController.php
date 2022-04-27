@@ -17,7 +17,7 @@ class SupportedModelController extends Controller
      */
     public function index()
     {
-        $supportedModel = SupportedModel::paginate();
+        $supportedModel = SupportedModel::all();
         return (new SupportedModelResourceCollection($supportedModel))->response();
     }
 

@@ -15,4 +15,5 @@ Route::group([
     $router->resource('supported-models', SupportedModelController::class);
     $router->resource('prices', PriceController::class);
     $router->resource('orders', OrderController::class);
+    $router->resource('shipping-companies', ShippingCompanyController::class);
 });
