@@ -39,6 +39,7 @@ class OrderController extends Controller
         $supportedModel = SupportedModel::where('model', 'like', '%' . $request->get('model') . '%')->first();
         if ($supportedModel){
             $order->model_id = $supportedModel->id;
+            $order->type = $supportedModel->type;
         }
         $order->storage = $request->input('storage');
         $order->battery = $request->input('battery');
