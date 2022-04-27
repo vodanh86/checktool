@@ -34,10 +34,18 @@ class PriceController extends AdminController
             }
         })->filter();
         $grid->column('storage', __('Dung lương bộ nhớ (GB)'));
-        $grid->column('level1_price', __('Giá loại 1'));
-        $grid->column('level2_price', __('Giá loại 2'));
-        $grid->column('level3_price', __('Giá loại 3'));
-        $grid->column('level4_price', __('Giá loại 4'));
+        $grid->level1_price(__('Giá loại 1'))->display(function ($prices) {
+            return json_encode($prices);
+        });
+        $grid->level2_price(__('Giá loại 2'))->display(function ($prices) {
+            return json_encode($prices);
+        });
+        $grid->level3_price(__('Giá loại 3'))->display(function ($prices) {
+            return json_encode($prices);
+        });
+        $grid->level4_price(__('Giá loại 4'))->display(function ($prices) {
+            return json_encode($prices);
+        });
 
         return $grid;
     }
