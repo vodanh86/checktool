@@ -58,8 +58,8 @@ class SupportedModelController extends Controller
     public function check(Request $request)
     {
         if ($request->get('type') && $request->get('model')){
-            $supportedModels = SupportedModel::where('type', 'like', '%' . $request->get('type') . '%')->where('model', $request->get('model'))->get();
-            if ($supportedModels) {
+            $supportedModel = SupportedModel::where('type', 'like', '%' . $request->get('type') . '%')->where('model', $request->get('model'))->first();
+            if ($supportedModel) {
                 return 1;
             }
         }
