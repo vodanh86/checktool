@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Support\Str;
 use App\Models\Category;
 use Carbon\Carbon;
+use App\Models\SupportedModel;
 
 final class Util {
 
