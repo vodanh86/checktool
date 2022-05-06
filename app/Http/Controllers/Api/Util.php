@@ -5,6 +5,7 @@ use Illuminate\Support\Str;
 use App\Models\Category;
 use Carbon\Carbon;
 use App\Models\SupportedModel;
+use App\Models\Price;
 
 final class Util {
 
