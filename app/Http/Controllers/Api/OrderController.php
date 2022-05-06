@@ -74,6 +74,7 @@ class OrderController extends Controller
         $order->province = $request->input('province');
         $order->district = $request->input('district');
         $order->commune = $request->input('commune');
+        $order->price = Util::checkPrice($request);  
         $order->save();
 
         $order->order_code = "TELINK" . $order->id;

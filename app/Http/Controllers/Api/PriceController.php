@@ -27,17 +27,7 @@ class PriceController extends Controller
      */
     public function check(Request $request)
     {
-        if ($request->get('type') && $request->get('model')){
-            $supportedModel = SupportedModel::where('type', 'like', '%' . $request->get('type') . '%')->where('model', 'like', '%' . $request->get('model') . '%')->first();
-            if ($supportedModel){
-                $price = Price::where('model_id', $supportedModel->id)->first();
-                if ($price) {
-                    return $price->level1_price;
-                }
-            }
-            
-        }
-        return "";
+        return Util::checkPrice($request);  
     }
 
     /**
