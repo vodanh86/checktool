@@ -16,4 +16,6 @@ Route::group([
     $router->resource('prices', PriceController::class);
     $router->resource('orders', OrderController::class);
     $router->resource('shipping-companies', ShippingCompanyController::class);
+    $router->resource('banks', BannkController::class);
+    $router->resource('configurations', ConfigurationController::class);
 });
