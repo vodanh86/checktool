@@ -83,7 +83,7 @@ class OrderController extends Controller
 
         $order->save();
 
-        $order->order_code = "TELINK" . $order->id;
+        $order->order_code = "TELLINK" . $order->id;
         $order->save();
         return (new OrderResource($order))->response()->setStatusCode(Response::HTTP_CREATED);
     }

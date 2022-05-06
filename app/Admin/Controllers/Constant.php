@@ -11,4 +11,5 @@ abstract class Constant
     const SCREEN_STATUS = array("1" => "Tốt", "2" => "Bình thường", "3"=>"Không tốt");
     const CASE_STATUS = array("1" => "Tốt", "2" => "Bình thường", "3"=>"Không tốt");
     const KEYBOARD_STATUS = array("1" => "Tốt", "2" => "Bình thường", "3"=>"Không tốt");
+    const DIAPHRAGM_STATUS = array("1" => "Tốt", "2" => "Bình thường", "3"=>"Không tốt");
 }
