@@ -74,7 +74,13 @@ class OrderController extends Controller
         $order->province = $request->input('province');
         $order->district = $request->input('district');
         $order->commune = $request->input('commune');
-        $order->price = Util::checkPrice($request);  
+        $price = Util::checkPrice($request);  
+        if (gettype($price) == "array") {
+            $order->price = $price["min"] . "-" . $price["max"]; 
+        } else {
+            $order->price = $price;
+        }
+
         $order->save();
 
         $order->order_code = "TELINK" . $order->id;
