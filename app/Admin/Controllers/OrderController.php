@@ -68,7 +68,7 @@ class OrderController extends AdminController
         $show->field('screen', __('Screen'));
         $show->field('case', __('Case'));
         $show->field('keyboard', __('Keyboard'));
-        $show->field('ring_tone', __('Ring tone'));
+        $show->field('diaphragm', __('Màng loa'));
         $show->field('finger_print', __('Finger print'));
         $show->field('sim_tray', __('Sim tray'));
         $show->field('home', __('Home'));
@@ -117,7 +117,7 @@ class OrderController extends AdminController
         $form->number('screen', __('Screen'));
         $form->number('case', __('Case'));
         $form->number('keyboard', __('Keyboard'));
-        $form->number('ring_tone', __('Ring tone'));
+        $form->number('diaphragm', __('Màng loa'));
         $form->number('finger_print', __('Finger print'));
         $form->number('sim_tray', __('Sim tray'));
         $form->number('home', __('Home'));

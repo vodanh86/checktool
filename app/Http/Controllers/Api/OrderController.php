@@ -47,7 +47,7 @@ class OrderController extends Controller
         $order->screen = $request->input('screen');
         $order->case = $request->input('case');
         $order->keyboard = $request->input('keyboard');
-        $order->ring_tone = $request->input('ring_tone');
+        $order->diaphragm = $request->input('diaphragm');
         $order->finger_print = $request->input('finger_print');
         $order->sim_tray = $request->input('sim_tray');
         $order->home = $request->input('home');
