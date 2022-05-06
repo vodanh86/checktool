@@ -38,7 +38,6 @@ class OrderController extends AdminController
             }
         })->filter();
         $grid->column('phone_number', __('Phone number'));
-        $grid->column('model_id', __('Model id'));
         $grid->column('storage', __('Storage'));
         $grid->column('battery', __('Battery'))->using(Constant::BATTERY_STATUS);
         $grid->column('screen', __('Screen'))->using(Constant::SCREEN_STATUS);
@@ -61,13 +60,17 @@ class OrderController extends AdminController
     {
         $show = new Show(Order::findOrFail($id));
 
-        $show->field('id', __('Id'));
-        $show->field('model_id', __('Model id'));
+        $show->field('model_id', __('Model id'))->as(function ($model_id) {
+            $model = SupportedModel::find($model_id);
+            if ($model) {
+                return $model->model;
+            }
+        });
         $show->field('storage', __('Storage'));
-        $show->field('battery', __('Battery'));
-        $show->field('screen', __('Screen'));
-        $show->field('case', __('Case'));
-        $show->field('keyboard', __('Keyboard'));
+        $show->field('battery', __('Battery'))->using(Constant::BATTERY_STATUS);
+        $show->field('screen', __('Screen'))->using(Constant::SCREEN_STATUS);
+        $show->field('case', __('Case'))->using(Constant::CASE_STATUS);
+        $show->field('keyboard', __('Keyboard'))->using(Constant::KEYBOARD_STATUS);
         $show->field('diaphragm', __('Màng loa'));
         $show->field('finger_print', __('Finger print'));
         $show->field('sim_tray', __('Sim tray'));
