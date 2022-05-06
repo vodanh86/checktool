@@ -45,7 +45,7 @@ class OrderController extends AdminController
         $grid->column('keyboard', __('Keyboard'))->using(Constant::KEYBOARD_STATUS);
         $grid->column('price', __('Price'));
         $grid->column('status', __('Status'))->editable('select', Constant::PHONE_STATUS);
-
+        $grid->disableCreation();
 
         $grid->actions(function ($actions) {
             $actions->disableDelete();
@@ -106,6 +106,11 @@ class OrderController extends AdminController
         $show->field('district', __('District'));
         $show->field('commune', __('Commune'));
         $show->field('phone_number', __('Phone number'));
+
+        $show->panel()->tools(function ($tools) {
+            $tools->disableEdit();
+            $tools->disableDelete();
+        });;
 
         return $show;
     }
