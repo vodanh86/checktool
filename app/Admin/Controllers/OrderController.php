@@ -44,7 +44,13 @@ class OrderController extends AdminController
         $grid->column('case', __('Case'))->using(Constant::CASE_STATUS);
         $grid->column('keyboard', __('Keyboard'))->using(Constant::KEYBOARD_STATUS);
         $grid->column('price', __('Price'));
-        $grid->column('status', __('Status'))->using(Constant::PHONE_STATUS);
+        $grid->column('status', __('Status'))->editable('select', Constant::PHONE_STATUS);
+
+
+        $grid->actions(function ($actions) {
+            $actions->disableDelete();
+            $actions->disableEdit();
+        });
 
         $grid->model()->orderBy('id', 'DESC');
         return $grid;
