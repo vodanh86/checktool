@@ -39,7 +39,10 @@ class OrderController extends AdminController
         })->filter();
         $grid->column('phone_number', __('Phone number'));
         $grid->column('storage', __('Storage'));
-        $grid->column('battery', __('Battery'));
+        $grid->column('battery', __('Battery'))->display(function ($batery) {
+            return $batery ? $batery." %" : "";
+        
+        });
         $grid->column('screen', __('Screen'))->using(Constant::SCREEN_STATUS);
         $grid->column('case', __('Case'))->using(Constant::CASE_STATUS);
         $grid->column('keyboard', __('Keyboard'))->using(Constant::KEYBOARD_STATUS);
