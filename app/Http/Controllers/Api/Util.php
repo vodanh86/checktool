@@ -37,6 +37,10 @@ final class Util {
                 if ($request->input('light_sensor') != "1") $countComponents ++;
                 if ($request->input('compass_sensor') != "1") $countComponents ++;
                 if ($request->input('headphone') != "1") $countComponents ++;
+                if ($request->input('tone_speaker') != "1") $countComponents ++;
+                if ($request->input('recording_microphone') != "1") $countComponents ++;
+                if ($request->input('front_microphone') != "1") $countComponents ++;
+                if ($request->input('back_microphone') != "1") $countComponents ++;
                 if ($price) {
                     if ($countComponents == 0) return $price->level1_price;
                     if ($countComponents == 1) return $price->level2_price;

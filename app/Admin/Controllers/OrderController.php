@@ -75,6 +75,7 @@ class OrderController extends AdminController
                 return $model->model;
             }
         });
+        $show->field('phone_number', __('Phone number'));
         $show->field('storage', __('Storage'));
         $show->field('battery', __('Battery'));
         $show->field('screen', __('Screen'))->using(Constant::SCREEN_STATUS);
@@ -92,6 +93,10 @@ class OrderController extends AdminController
         $show->field('cellphone_wave', __('Cellphone wave'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('wifi', __('Wifi'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('speaker', __('Speaker'))->using(Constant::DIAPHRAGM_STATUS);
+        $show->field('tone_speaker', __('Tone speaker'));
+        $show->field('recording_microphone', __('Recording microphone'));
+        $show->field('front_microphone', __('Front microphone'));
+        $show->field('back_microphone', __('Back microphone'));
         $show->field('microphone', __('Microphone'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('front_camera', __('Front camera'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('back_camera', __('Back camera'))->using(Constant::DIAPHRAGM_STATUS);
@@ -108,7 +113,6 @@ class OrderController extends AdminController
         $show->field('province', __('Province'));
         $show->field('district', __('District'));
         $show->field('commune', __('Commune'));
-        $show->field('phone_number', __('Phone number'));
 
         $show->panel()->tools(function ($tools) {
             $tools->disableEdit();
@@ -162,6 +166,10 @@ class OrderController extends AdminController
         $form->text('district', __('District'));
         $form->text('commune', __('Commune'));
         $form->select('status', __('Status'))->options(Constant::PHONE_STATUS)->default(0);
+        $form->number('tone_speaker', __('Tone speaker'));
+        $form->number('recording_microphone', __('Recording microphone'));
+        $form->number('front_microphone', __('Front microphone'));
+        $form->number('back_microphone', __('Back microphone'));
 
         return $form;
     }
