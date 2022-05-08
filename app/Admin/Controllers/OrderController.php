@@ -93,10 +93,10 @@ class OrderController extends AdminController
         $show->field('cellphone_wave', __('Cellphone wave'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('wifi', __('Wifi'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('speaker', __('Speaker'))->using(Constant::DIAPHRAGM_STATUS);
-        $show->field('tone_speaker', __('Tone speaker'));
-        $show->field('recording_microphone', __('Recording microphone'));
-        $show->field('front_microphone', __('Front microphone'));
-        $show->field('back_microphone', __('Back microphone'));
+        $show->field('tone_speaker', __('Tone speaker'))->using(Constant::DIAPHRAGM_STATUS);
+        $show->field('recording_microphone', __('Recording microphone'))->using(Constant::DIAPHRAGM_STATUS);
+        $show->field('front_microphone', __('Front microphone'))->using(Constant::DIAPHRAGM_STATUS);
+        $show->field('back_microphone', __('Back microphone'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('microphone', __('Microphone'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('front_camera', __('Front camera'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('back_camera', __('Back camera'))->using(Constant::DIAPHRAGM_STATUS);
