@@ -41,13 +41,18 @@ class OrderController extends AdminController
         $grid->column('storage', __('Storage'));
         $grid->column('battery', __('Battery'))->display(function ($batery) {
             return $batery ? $batery." %" : "";
-        
         });
         $grid->column('screen', __('Screen'))->using(Constant::SCREEN_STATUS);
         $grid->column('case', __('Case'))->using(Constant::CASE_STATUS);
         $grid->column('keyboard', __('Keyboard'))->using(Constant::KEYBOARD_STATUS);
         $grid->column('price', __('Price'));
         $grid->column('status', __('Status'))->editable('select', Constant::PHONE_STATUS);
+        $grid->column('created_at', __('Created at'))->display(function ($date) {
+            return date ("H:i d/m/Y", strtotime($date));  
+        });
+        $grid->column('updated_at', __('Updated at'))->display(function ($date) {
+            return date ("H:i d/m/Y", strtotime($date));  
+        });
         $grid->disableCreation();
 
         $grid->actions(function ($actions) {
