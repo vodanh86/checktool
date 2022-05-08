@@ -35,6 +35,7 @@ final class Util {
                 if ($request->input('back_camera') != "1") $countComponents ++;
                 if ($request->input('calling_sensor') != "1") $countComponents ++;
                 if ($request->input('light_sensor') != "1") $countComponents ++;
+                if ($request->input('rotation_sensor') != "1") $countComponents ++;
                 if ($request->input('compass_sensor') != "1") $countComponents ++;
                 if ($request->input('headphone') != "1") $countComponents ++;
                 if ($request->input('tone_speaker') != "1") $countComponents ++;

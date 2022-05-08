@@ -64,6 +64,7 @@ class OrderController extends Controller
         $order->back_camera = $request->input('back_camera');
         $order->calling_sensor = $request->input('calling_sensor');
         $order->light_sensor = $request->input('light_sensor');
+        $order->rotation_sensor = $request->input('rotation_sensor');
         $order->compass_sensor = $request->input('compass_sensor');
         $order->headphone = $request->input('headphone');
         $order->price = $request->input('price');

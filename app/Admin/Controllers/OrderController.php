@@ -102,6 +102,7 @@ class OrderController extends AdminController
         $show->field('back_camera', __('Back camera'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('calling_sensor', __('Calling sensor'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('light_sensor', __('Light sensor'))->using(Constant::DIAPHRAGM_STATUS);
+        $show->field('rotation_sensor', __('Rotation sensor'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('compass_sensor', __('Compass sensor'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('headphone', __('Headphone'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('status', __('Status'));
@@ -155,6 +156,7 @@ class OrderController extends AdminController
         $form->number('back_camera', __('Back camera'));
         $form->number('calling_sensor', __('Calling sensor'));
         $form->number('light_sensor', __('Light sensor'));
+        $form->number('rotation_sensor', __('Rotation sensor'));
         $form->number('compass_sensor', __('Compass sensor'));
         $form->number('headphone', __('Headphone'));
         $form->text('price', __('Price'));
