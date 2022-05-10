@@ -63,12 +63,20 @@ class PriceController extends AdminController
         $show->field('id', __('Id'));
         $show->field('model_id', __('Model id'));
         $show->field('storage', __('Storage'));
-        $show->field('level1_price', __('Level1 price'));
-        $show->field('level2_price', __('Level2 price'));
-        $show->field('level3_price', __('Level3 price'));
+        $show->field('level1_price', __('Level1 price'))->as(function ($price) {
+            return json_encode($price);
+        });
+        $show->field('level2_price', __('Level2 price'))->as(function ($price) {
+            return json_encode($price);
+        });
+        $show->field('level3_price', __('Level3 price'))->as(function ($price) {
+            return json_encode($price);
+        });
+        $show->field('level4_price', __('Level4 price'))->as(function ($price) {
+            return json_encode($price);
+        });
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
-        $show->field('level4_price', __('Level4 price'));
 
         return $show;
     }
