@@ -75,6 +75,11 @@ class OrderController extends Controller
         $order->province = $request->input('province');
         $order->district = $request->input('district');
         $order->commune = $request->input('commune');
+        $order->tone_speaker = $request->input('tone_speaker');
+        $order->recording_microphone = $request->input('recording_microphone');
+        $order->front_microphone = $request->input('front_microphone');
+        $order->back_microphone = $request->input('back_microphone');
+
         $price = Util::checkPrice($request);  
         if (gettype($price) == "array") {
             $order->price = $price["min"] . "-" . $price["max"]; 
