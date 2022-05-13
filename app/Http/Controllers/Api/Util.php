@@ -19,6 +19,7 @@ final class Util {
                 if ($request->input('case') != "1") $countComponents ++;
                 if ($request->input('keyboard') != "1") $countComponents ++;
                 if ($request->input('diaphragm') != "1") $countComponents ++;
+                if ($request->input('charging_port') != "1") $countComponents ++;
                 if ($request->input('finger_print') != "1") $countComponents ++;
                 if ($request->input('sim_tray') != "1") $countComponents ++;
                 if ($request->input('home') != "1") $countComponents ++;

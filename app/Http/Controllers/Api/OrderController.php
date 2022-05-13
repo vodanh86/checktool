@@ -48,6 +48,7 @@ class OrderController extends Controller
         $order->case = $request->input('case');
         $order->keyboard = $request->input('keyboard');
         $order->diaphragm = $request->input('diaphragm');
+        $order->charging_port = $request->input('charging_port');
         $order->finger_print = $request->input('finger_print');
         $order->sim_tray = $request->input('sim_tray');
         $order->home = $request->input('home');

@@ -87,6 +87,7 @@ class OrderController extends AdminController
         $show->field('case', __('Case'))->using(Constant::CASE_STATUS);
         $show->field('keyboard', __('Keyboard'))->using(Constant::KEYBOARD_STATUS);
         $show->field('diaphragm', __('Màng loa'))->using(Constant::DIAPHRAGM_STATUS);
+        $show->field('charging_port', __('charging port'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('finger_print', __('Finger print'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('sim_tray', __('Sim tray'))->using(Constant::DIAPHRAGM_STATUS);
         $show->field('home', __('Home'))->using(Constant::DIAPHRAGM_STATUS);
@@ -145,6 +146,7 @@ class OrderController extends AdminController
         $form->number('case', __('Case'));
         $form->number('keyboard', __('Keyboard'));
         $form->number('diaphragm', __('Màng loa'));
+        $form->number('charging_port', __('charging port'));
         $form->number('finger_print', __('Finger print'));
         $form->number('sim_tray', __('Sim tray'));
         $form->number('home', __('Home'));
