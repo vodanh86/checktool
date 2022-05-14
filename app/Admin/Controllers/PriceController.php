@@ -34,17 +34,17 @@ class PriceController extends AdminController
             }
         })->filter();
         $grid->column('storage', __('Dung lương bộ nhớ (GB)'));
-        $grid->level1_price(__('Giá loại 1'))->display(function ($prices) {
-            return json_encode($prices);
+        $grid->level1_price(__('Giá loại 1'))->display(function ($price) {
+            return "min: ".number_format($price["min"])." - max: ".number_format($price["max"]);
         });
-        $grid->level2_price(__('Giá loại 2'))->display(function ($prices) {
-            return json_encode($prices);
+        $grid->level2_price(__('Giá loại 2'))->display(function ($price) {
+            return "min: ".number_format($price["min"])." - max: ".number_format($price["max"]);
         });
-        $grid->level3_price(__('Giá loại 3'))->display(function ($prices) {
-            return json_encode($prices);
+        $grid->level3_price(__('Giá loại 3'))->display(function ($price) {
+            return "min: ".number_format($price["min"])." - max: ".number_format($price["max"]);
         });
-        $grid->level4_price(__('Giá loại 4'))->display(function ($prices) {
-            return json_encode($prices);
+        $grid->level4_price(__('Giá loại 4'))->display(function ($price) {
+            return "min: ".number_format($price["min"])." - max: ".number_format($price["max"]);
         });
 
         return $grid;
@@ -64,7 +64,8 @@ class PriceController extends AdminController
         $show->field('model_id', __('Model id'));
         $show->field('storage', __('Storage'));
         $show->field('level1_price', __('Level1 price'))->as(function ($price) {
-            return json_encode($price);
+            return "max: ".number_format($price["max"])." - min: ".number_format($price["min"]);
+            //return json_encode($price);
         });
         $show->field('level2_price', __('Level2 price'))->as(function ($price) {
             return json_encode($price);
