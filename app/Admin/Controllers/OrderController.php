@@ -30,7 +30,7 @@ class OrderController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('order_code', __('Mã giao dịch'));
-        $grid->column('type', __('Loại máy'));
+        $grid->column('type')->filter(Constant::DEVICE_TYPE);
         $grid->model_id('Dòng máy')->display(function ($model_id) {
             $model = SupportedModel::find($model_id);
             if ($model) {
