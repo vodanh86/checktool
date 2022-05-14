@@ -94,20 +94,20 @@ class PriceController extends AdminController
         $form->select('model_id', __('Dòng máy'))->options(SupportedModel::all()->pluck('model', 'id'))->required();
         $form->number('storage', __('Dung lượng bộ nhớ (GB)'))->required();
         $form->embeds('level1_price',  __('Giá hàng loại 1'), function ($form) {
-            $form->text('min')->rules('required');
-            $form->text('max')->rules('required');
+            $form->currency('min')->symbol('VND')->rules('required');
+            $form->currency('max')->symbol('VND')->rules('required');
         });
         $form->embeds('level2_price',  __('Giá hàng loại 2'), function ($form) {
-            $form->text('min')->rules('required');
-            $form->text('max')->rules('required');
+            $form->currency('min')->symbol('VND')->rules('required');
+            $form->currency('max')->symbol('VND')->rules('required');
         });
         $form->embeds('level3_price',  __('Giá hàng loại 3'), function ($form) {
-            $form->text('min')->rules('required');
-            $form->text('max')->rules('required');
+            $form->currency('min')->symbol('VND')->rules('required');
+            $form->currency('max')->symbol('VND')->rules('required');
         });
         $form->embeds('level4_price',  __('Giá hàng loại 4'), function ($form) {
-            $form->text('min')->rules('required');
-            $form->text('max')->rules('required');
+            $form->currency('min')->symbol('VND')->rules('required');
+            $form->currency('max')->symbol('VND')->rules('required');
         });
 
         return $form;
