@@ -92,7 +92,7 @@ class PriceController extends AdminController
 
         $form->select('type', __('Loại'))->options(Constant::DEVICE_TYPE)->setWidth(2, 2)->required();
         $form->select('model_id', __('Dòng máy'))->options(SupportedModel::all()->pluck('model', 'id'))->required();
-        $form->number('storage', __('Dung lượng bộ nhớ (GB)'));
+        $form->number('storage', __('Dung lượng bộ nhớ (GB)'))->required();
         $form->embeds('level1_price',  __('Giá hàng loại 1'), function ($form) {
             $form->text('min')->rules('required');
             $form->text('max')->rules('required');
