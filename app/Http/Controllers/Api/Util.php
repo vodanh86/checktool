@@ -9,6 +9,15 @@ use App\Models\Price;
 
 final class Util {
 
+    static function getIphoneStorage($storage){
+        if ($storage < 32) return 32;
+        if ($storage < 64) return 64;
+        if ($storage < 128) return 128;
+        if ($storage < 256) return 256;
+        if ($storage < 512) return 512;
+        return 1028;
+    }
+
     static function checkPrice($request){
         if ($request->get('type') && $request->get('model')){
             $supportedModel = SupportedModel::where('type', 'like', '%' . $request->get('type') . '%')->where('model', 'like', '%' . $request->get('model') . '%')->first();

@@ -42,7 +42,7 @@ class OrderController extends Controller
             $order->type = $supportedModel->type;
         }
         $order->phone_number = $request->input('phone_number');
-        $order->storage = $request->input('storage');
+        $order->storage =  Util::checkPrice($request->input('storage'));
         $order->battery = $request->input('battery');
         $order->screen = $request->input('screen');
         $order->case = $request->input('case');
