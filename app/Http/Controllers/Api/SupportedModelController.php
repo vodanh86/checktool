@@ -57,6 +57,11 @@ class SupportedModelController extends Controller
 
     public function check(Request $request)
     {
+        // temporary allow android
+        if ($request->get('type') == "Android"){
+            return 1;
+        }
+
         if ($request->get('type') && $request->get('model')){
             $supportedModel = SupportedModel::where('type', 'like', '%' . $request->get('type') . '%')->where('model', 'like', $request->get('model'))->first();
             if ($supportedModel) {
