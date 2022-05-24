@@ -91,7 +91,7 @@ class OrderController extends AdminController
         $show->back_image()->image(URL::to("/")."/");
         $show->field('storage', __('Storage'));
         $show->field('battery', __('Battery'));
-        $show->field('crew', __('Ốc vít'))->using(Constant::SCREEN_STATUS);
+        $show->field('screw', __('Ốc vít'))->using(Constant::SCREEN_STATUS);
         $show->field('screen', __('Screen'))->using(Constant::SCREEN_STATUS);
         $show->field('case', __('Case'))->using(Constant::CASE_STATUS);
         $show->field('keyboard', __('Keyboard'))->using(Constant::KEYBOARD_STATUS);
