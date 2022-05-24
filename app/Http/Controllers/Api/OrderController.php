@@ -86,17 +86,17 @@ class OrderController extends Controller
         $order->birth_date = $request->input('birth_date');
 
         if ($file = $request->file('appearance')) {
-            $path = $file->store('public/images');
+            $path = $file->store('images', ['disk' => 'images']);
             $order->appearance = $path;
         }
 
         if ($file = $request->file('front_image')) {
-            $path = $file->store('public/images');
+            $path = $file->store('images', ['disk' => 'images']);
             $order->front_image = $path;
         }
 
         if ($file = $request->file('back_image')) {
-            $path = $file->store('public/images');
+            $path = $file->store('images', ['disk' => 'images']);
             $order->back_image = $path;
         }
 

@@ -40,7 +40,7 @@ class OrderController extends AdminController
         })->filter();
         $grid->column('name', __('Tên'));
         $grid->column('phone_number', __('Phone number'));
-        $grid->column('appearance', __('Ngoại hình'))->image(URL::to("../storage/app/"),60,60);
+        $grid->column('appearance', __('Ngoại hình'))->image(URL::to(""),60,60);
         $grid->column('storage', __('Storage'));
         $grid->column('battery', __('Battery'))->display(function ($batery) {
             return $batery ? $batery." %" : "";
@@ -86,9 +86,9 @@ class OrderController extends AdminController
         $show->field('name', __('Họ tên'));
         $show->field('birth_date', __('Ngày sinh'));
         $show->field('phone_number', __('Phone number'));
-        $show->appearance()->image(URL::to("../storage/app/")."/");
-        $show->front_image()->image(URL::to("../storage/app/")."/");
-        $show->back_image()->image(URL::to("../storage/app/")."/");
+        $show->appearance()->image(URL::to("/")."/");
+        $show->front_image()->image(URL::to("/")."/");
+        $show->back_image()->image(URL::to("/")."/");
         $show->field('storage', __('Storage'));
         $show->field('battery', __('Battery'));
         $show->field('crew', __('Ốc vít'))->using(Constant::SCREEN_STATUS);
