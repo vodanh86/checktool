@@ -24,6 +24,7 @@ final class Util {
             if ($supportedModel){
                 $price = Price::where('model_id', $supportedModel->id)->first();
                 $countComponents = 0;
+                if ($request->input('crew') != "1") $countComponents += 3;
                 if ($request->input('screen') != "1") $countComponents ++;
                 if ($request->input('case') != "1") $countComponents ++;
                 if ($request->input('keyboard') != "1") $countComponents ++;

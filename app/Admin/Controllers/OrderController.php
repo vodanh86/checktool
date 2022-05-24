@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use URL;
 use App\Models\Order;
 use App\Models\Price;
 use App\Models\SupportedModel;
@@ -37,7 +38,9 @@ class OrderController extends AdminController
                 return $model->model;
             }
         })->filter();
+        $grid->column('name', __('Tên'));
         $grid->column('phone_number', __('Phone number'));
+        $grid->column('appearance', __('Ngoại hình'))->image(URL::to("../storage/app/"),60,60);
         $grid->column('storage', __('Storage'));
         $grid->column('battery', __('Battery'))->display(function ($batery) {
             return $batery ? $batery." %" : "";
@@ -80,9 +83,15 @@ class OrderController extends AdminController
                 return $model->model;
             }
         });
+        $show->field('name', __('Họ tên'));
+        $show->field('birth_date', __('Ngày sinh'));
         $show->field('phone_number', __('Phone number'));
+        $show->appearance()->image(URL::to("../storage/app/")."/");
+        $show->front_image()->image(URL::to("../storage/app/")."/");
+        $show->back_image()->image(URL::to("../storage/app/")."/");
         $show->field('storage', __('Storage'));
         $show->field('battery', __('Battery'));
+        $show->field('crew', __('Ốc vít'))->using(Constant::SCREEN_STATUS);
         $show->field('screen', __('Screen'))->using(Constant::SCREEN_STATUS);
         $show->field('case', __('Case'))->using(Constant::CASE_STATUS);
         $show->field('keyboard', __('Keyboard'))->using(Constant::KEYBOARD_STATUS);

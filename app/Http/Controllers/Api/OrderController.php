@@ -80,6 +80,25 @@ class OrderController extends Controller
         $order->recording_microphone = $request->input('recording_microphone');
         $order->front_microphone = $request->input('front_microphone');
         $order->back_microphone = $request->input('back_microphone');
+        $order->screw = $request->input('screw');
+        $order->appearance = $request->input('appearance');
+        $order->name = $request->input('name');
+        $order->birth_date = $request->input('birth_date');
+
+        if ($file = $request->file('appearance')) {
+            $path = $file->store('public/images');
+            $order->appearance = $path;
+        }
+
+        if ($file = $request->file('front_image')) {
+            $path = $file->store('public/images');
+            $order->front_image = $path;
+        }
+
+        if ($file = $request->file('back_image')) {
+            $path = $file->store('public/images');
+            $order->back_image = $path;
+        }
 
         $price = Util::checkPrice($request);  
         if (gettype($price) == "array") {
