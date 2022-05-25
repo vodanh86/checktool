@@ -32,7 +32,7 @@ class PriceController extends Controller
         if ($request->get('type') == "Android"){
             return array("min" => 8, "max" => 19);
         }*/
-        return response()->json(['data' => Util::checkPrice($request)], 200);
+        return Util::checkPrice($request);  
     }
 
     /**
