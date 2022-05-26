@@ -26,10 +26,10 @@ class SupportedModelController extends AdminController
     {
         $grid = new Grid(new SupportedModel());
 
-        $grid->column('type', __('Loại máy'));
-        $grid->column('model', __('Model'));
-        $grid->column('manufacturer', __('Hãng sản xuất'));
-        $grid->column('board', __('Loại '));
+        $grid->column('type', __('Loại máy'))->filter('like');
+        $grid->column('model', __('Model'))->filter('like');
+        $grid->column('manufacturer', __('Hãng sản xuất'))->filter('like');
+        $grid->column('board', __('Loại '))->filter('like');
         $grid->column('status', __('Trạng thái'))->using(Constant::STATUS);
 
         return $grid;
