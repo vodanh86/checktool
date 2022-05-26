@@ -56,8 +56,8 @@ final class Util {
                 if ($price) {
                     if ($countComponents == 0) return $price->level1_price;
                     if ($countComponents == 1) return $price->level2_price;
-                    if ($countComponents == 2) return $price->level3_price;
-                    return $price->level4_price;
+                    #if ($countComponents == 2) return $price->level3_price;
+                    return $price->level3_price;
                 }
             }
         }

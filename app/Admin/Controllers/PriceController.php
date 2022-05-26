@@ -34,16 +34,13 @@ class PriceController extends AdminController
             }
         })->filter();
         $grid->column('storage', __('Dung lương bộ nhớ (GB)'));
-        $grid->level1_price(__('Giá loại 1'))->display(function ($price) {
+        $grid->level1_price(__('Giá loại A'))->display(function ($price) {
             return "min: ".number_format($price["min"])." - max: ".number_format($price["max"]);
         });
-        $grid->level2_price(__('Giá loại 2'))->display(function ($price) {
+        $grid->level2_price(__('Giá loại B'))->display(function ($price) {
             return "min: ".number_format($price["min"])." - max: ".number_format($price["max"]);
         });
-        $grid->level3_price(__('Giá loại 3'))->display(function ($price) {
-            return "min: ".number_format($price["min"])." - max: ".number_format($price["max"]);
-        });
-        $grid->level4_price(__('Giá loại 4'))->display(function ($price) {
+        $grid->level3_price(__('Giá loại C'))->display(function ($price) {
             return "min: ".number_format($price["min"])." - max: ".number_format($price["max"]);
         });
 
@@ -63,17 +60,14 @@ class PriceController extends AdminController
         $show->field('id', __('Id'));
         $show->field('model_id', __('Model id'));
         $show->field('storage', __('Storage'));
-        $show->field('level1_price', __('Level1 price'))->as(function ($price) {
+        $show->field('level1_price', __('Giá loại A'))->as(function ($price) {
             return "max: ".number_format($price["max"])." - min: ".number_format($price["min"]);
             //return json_encode($price);
         });
-        $show->field('level2_price', __('Level2 price'))->as(function ($price) {
+        $show->field('level2_price', __('Giá loại B'))->as(function ($price) {
             return json_encode($price);
         });
-        $show->field('level3_price', __('Level3 price'))->as(function ($price) {
-            return json_encode($price);
-        });
-        $show->field('level4_price', __('Level4 price'))->as(function ($price) {
+        $show->field('level3_price', __('Giá loại C'))->as(function ($price) {
             return json_encode($price);
         });
         $show->field('created_at', __('Created at'));
@@ -94,19 +88,15 @@ class PriceController extends AdminController
         $form->select('type', __('Loại'))->options(Constant::DEVICE_TYPE)->setWidth(2, 2)->required();
         $form->select('model_id', __('Dòng máy'))->options(SupportedModel::all()->pluck('model', 'id'))->required();
         $form->number('storage', __('Dung lượng bộ nhớ (GB)'))->required();
-        $form->embeds('level1_price',  __('Giá hàng loại 1'), function ($form) {
+        $form->embeds('level1_price',  __('Giá hàng loại A'), function ($form) {
             $form->currency('max')->symbol('VND')->rules('required');
             $form->currency('min')->symbol('VND')->rules('required');
         });
-        $form->embeds('level2_price',  __('Giá hàng loại 2'), function ($form) {
+        $form->embeds('level2_price',  __('Giá hàng loại B'), function ($form) {
             $form->currency('max')->symbol('VND')->rules('required');
             $form->currency('min')->symbol('VND')->rules('required');
         });
-        $form->embeds('level3_price',  __('Giá hàng loại 3'), function ($form) {
-            $form->currency('max')->symbol('VND')->rules('required');
-            $form->currency('min')->symbol('VND')->rules('required');
-        });
-        $form->embeds('level4_price',  __('Giá hàng loại 4'), function ($form) {
+        $form->embeds('level3_price',  __('Giá hàng loại C'), function ($form) {
             $form->currency('max')->symbol('VND')->rules('required');
             $form->currency('min')->symbol('VND')->rules('required');
         });
