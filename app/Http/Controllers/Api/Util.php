@@ -54,14 +54,14 @@ final class Util {
                 if ($request->input('front_microphone') != "1") $countComponents ++;
                 if ($request->input('back_microphone') != "1") $countComponents ++;
                 if ($price) {
-                    if ($countComponents == 0) return $price->level1_price;
-                    if ($countComponents == 1) return $price->level2_price;
+                    if ($countComponents == 0) return array("price" => $price->level1_price, "type" => "Loại A");
+                    if ($countComponents == 1) return array("price" => $price->level2_price, "type" => "Loại B");
                     #if ($countComponents == 2) return $price->level3_price;
-                    return $price->level3_price;
+                    return array("price" => $price->level3_price, "type" => "Loại C");
                 }
             }
         }
-        return "";
+        return array();
     }
 
 }

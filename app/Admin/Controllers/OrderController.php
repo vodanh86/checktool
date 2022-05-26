@@ -40,7 +40,10 @@ class OrderController extends AdminController
         })->filter();
         $grid->column('name', __('Tên'));
         $grid->column('phone_number', __('Phone number'));
-        $grid->column('appearance', __('Ngoại hình'))->image(URL::to(""),60,60);
+        $grid->column('appearance',  __('Ngoại hình'))->display(function ($pictures) {
+            return json_decode($pictures, true);
+        })->image(URL::to(""), 60, 60);
+        
         $grid->column('storage', __('Storage'));
         $grid->column('battery', __('Battery'))->display(function ($batery) {
             return $batery ? $batery." %" : "";
@@ -86,7 +89,17 @@ class OrderController extends AdminController
         $show->field('name', __('Họ tên'));
         $show->field('birth_date', __('Ngày sinh'));
         $show->field('phone_number', __('Phone number'));
-        $show->appearance()->image(URL::to("/")."/");
+        $show->appearance()->unescape()->as(function ($pictures) {
+            if (gettype($pictures) == 'string'){
+                $images = json_decode($pictures, true);
+                $link = "";
+                foreach($images as $image){
+                    $link .= "<image width='150px' src='".URL::to("/")."/".$image."'></image>";
+                }
+                return $link;
+            }
+        });
+        //$show->appearance()->image(URL::to("/")."/");
         $show->front_image()->image(URL::to("/")."/");
         $show->back_image()->image(URL::to("/")."/");
         $show->field('storage', __('Storage'));

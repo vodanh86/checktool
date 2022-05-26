@@ -81,13 +81,16 @@ class OrderController extends Controller
         $order->front_microphone = $request->input('front_microphone');
         $order->back_microphone = $request->input('back_microphone');
         $order->screw = $request->input('screw');
-        $order->appearance = $request->input('appearance');
         $order->name = $request->input('name');
         $order->birth_date = $request->input('birth_date');
 
-        if ($file = $request->file('appearance')) {
-            $path = $file->store('images', ['disk' => 'images']);
-            $order->appearance = $path;
+        if ($files = $request->file('appearance')) {
+            $paths = [];
+            foreach ($files as $file){  
+                $path = $file->store('images', ['disk' => 'images']);
+                $paths[] = $path;
+            }
+            $order->appearance = json_encode($paths);
         }
 
         if ($file = $request->file('front_image')) {
@@ -101,10 +104,10 @@ class OrderController extends Controller
         }
 
         $price = Util::checkPrice($request);  
-        if (gettype($price) == "array") {
-            $order->price = $price["min"] . "-" . $price["max"]; 
+        if (isset($price["price"])) {
+            $order->price = $price["price"]["min"] . "-" . $price["price"]["max"]; 
         } else {
-            $order->price = $price;
+            $order->price = "";
         }
 
         $order->save();
