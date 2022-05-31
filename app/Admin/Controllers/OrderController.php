@@ -99,9 +99,6 @@ class OrderController extends AdminController
                 return $link;
             }
         });
-        //$show->appearance()->image(URL::to("/")."/");
-        $show->front_image()->image(URL::to("/")."/");
-        $show->back_image()->image(URL::to("/")."/");
         $show->field('storage', __('Storage'));
         $show->field('battery', __('Battery'));
         $show->field('screw', __('Ốc vít'))->using(Constant::SCREEN_STATUS);

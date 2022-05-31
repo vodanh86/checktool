@@ -93,16 +93,6 @@ class OrderController extends Controller
             $order->appearance = json_encode($paths);
         }
 
-        if ($file = $request->file('front_image')) {
-            $path = $file->store('images', ['disk' => 'images']);
-            $order->front_image = $path;
-        }
-
-        if ($file = $request->file('back_image')) {
-            $path = $file->store('images', ['disk' => 'images']);
-            $order->back_image = $path;
-        }
-
         $price = Util::checkPrice($request);  
         if (isset($price["price"])) {
             $order->price = $price["price"]["min"] . "-" . $price["price"]["max"]; 
