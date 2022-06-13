@@ -41,8 +41,18 @@ class OrderController extends AdminController
         $grid->column('name', __('Tên'));
         $grid->column('phone_number', __('Phone number'));
         $grid->column('appearance',  __('Ngoại hình'))->display(function ($pictures) {
-            return json_decode($pictures, true);
-        })->image(URL::to(""), 60, 60);
+            $images = "";
+            if ($pictures){
+                $pictures = json_decode($pictures);
+                if ($pictures){
+                    foreach($pictures as $key=>$picture){
+                        $link = URL::to("")."/".$picture;
+                        $images .= '<a href="'.$link.'" target="_blank""><img src="'.$link.'" alt="Girl in a jacket" width="50" height="60"></a>';
+                    }
+                }
+            }
+            return $images;
+        });
         
         $grid->column('storage', __('Storage'));
         $grid->column('battery', __('Battery'))->display(function ($batery) {
